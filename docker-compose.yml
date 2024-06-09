@@ -1,0 +1,49 @@
+services:
+  app:
+    image: k10b307/minsu_backend
+    ports:
+      - "8081:8080"
+    container_name: backend
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/minsu?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: SSAFY
+      TZ: Asia/Seoul
+    networks:
+      - minsu_network
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: SSAFY
+      MYSQL_DATABASE: minsu
+      TZ: Asia/Seoul
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    container_name: mysql
+    command: --default-time-zone='+09:00'
+    networks:
+      - minsu_network
+
+  frontend:
+    image: k10b307/minsu_frontend
+    ports:
+      - "8082:80"
+    depends_on:
+      - app
+    container_name: frontend
+    environment:
+      TZ: Asia/Seoul
+    networks:
+      - minsu_network
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  minsu_network:

@@ -1,0 +1,20 @@
+.underline:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.postlist-content {
+    padding: 30px;
+    width: auto;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+}
+
+.custom-select {
+    width: 70px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}

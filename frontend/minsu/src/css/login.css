@@ -1,0 +1,17 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    input {
+      width: 200px;
+      height: 50px;
+      border: 0.5px solid #ccc;
+      border-radius: 5px;
+      margin: 10px;
+    }
+
+    button {
+      margin: 0px 10px;
+    }
+}
